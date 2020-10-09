@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>First Electron Task</title>
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="forms">
+        <form class="login-form">
+          <h1>Enter your Credentials</h1>
+          <input type="text" placeholder="Username" id="userName"/>
+          <input type="password" placeholder="Password" id="userPasword"/>
+          <button type="submit">login</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const electron = require("electron");
+      const { ipcRenderer } = require('electron');
+
+      const form = document.querySelector("form");
+      form.addEventListener("submit", submitForm);
+
+      function submitForm(e) {
+        e.preventDefault();
+       // console.log(123);
+
+        const username = document.querySelector('#userName').value;
+        const password = document.querySelector('#userPasword').value;
+
+        if(username!="NCS" && password!="uNCS"){
+            console.log("WROND INFO");
+            alert("Wrong Credentials Entered");
+        }else{
+          window.location.replace("http://www.tecncs.com/");
+        }
+
+        console.log(username,password);
+        details = {
+            name:username,
+            pass:password
+        }
+       
+      }
+    </script>
+  </body>
+</html>
